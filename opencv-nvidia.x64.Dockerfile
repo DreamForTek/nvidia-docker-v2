@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:experimental
 
-FROM nvidia/cuda:11.1-devel-ubuntu20.04 as builder
+FROM nvidia/cuda:11.0-devel-ubuntu20.04 as builder
 
 ENV OPENCV_PREFIX=/opt/opencv
 
@@ -86,11 +86,10 @@ RUN cd /opt/ &&\
 # # resulting image with environment
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-FROM nvidia/cuda:11.1-runtime-ubuntu20.04 as runtime
+FROM nvidia/cuda:11.0-runtime-ubuntu20.04 as runtime
 
 COPY --from=builder ${OPENCV_PREFIX} ${OPENCV_PREFIX}
 
 # #for modifications during configuration
 #ENV LD_LIBRARY_PATH=/opt/qt5/lib:${LD_LIBRARY_PATH}
 
-RUN sss
